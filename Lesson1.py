@@ -8,6 +8,10 @@ print(12345)
 # write a program to say your name
 # write a program to display your age.
 
+# use format
+name = 'John'
+print('hello {0}'.format(name))
+
 # do the math -- 10 minites
 
 print(1+2)
