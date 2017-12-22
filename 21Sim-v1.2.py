@@ -136,7 +136,9 @@ def show_card_status():
 # draw a random card in the deck
 def draw_card_use_index(cards,player):
 
-    list_card_in_deck = [card.index for card in cards if  card.position == 'deck']
+    #list_card_in_deck = [card.index for card in cards if  card.position == 'deck']
+    # do the above using lambda
+    list_card_in_deck = list(filter(lambda card: card.index if card.position == 'deck' else None, cards))
 
     card_drawn_index = random.choice(list_card_in_deck)
 
@@ -148,8 +150,9 @@ def draw_card_use_index(cards,player):
 
 def draw_card(cards,player_name):
 
-    list_card_in_deck = [card for card in cards if  card.position == 'deck']
-
+    #list_card_in_deck = [card for card in cards if  card.position == 'deck']
+    # do the above using lambda
+    list_card_in_deck = list(filter(lambda card: card.position == 'deck', cards))
     card_drawn = random.choice(list_card_in_deck)
 
     #card_drawn.status()
@@ -162,8 +165,9 @@ def draw_card(cards,player_name):
 
 def draw_card_dealer(cards,player_name):
 
-    list_card_in_deck = [card for card in cards if  card.position == 'deck']
-
+    #list_card_in_deck = [card for card in cards if  card.position == 'deck']
+    # do the above using lambda
+    list_card_in_deck = list(filter(lambda card: card.position == 'deck', cards))
     card_drawn = random.choice(list_card_in_deck)
 
     #card_drawn.status()
@@ -175,8 +179,10 @@ def draw_card_dealer(cards,player_name):
     #card_drawn.status()
 
 def shuffle(cards):
-    for card in cards:
-        card.change_position('deck')
+    #for card in cards:
+    #    card.change_position('deck')
+    lambda card: card.change_position('deck'),cards
+
 
 def discard_cards(cards):
     list_cards_currently_played = [card for card in cards if card.position != 'deck' and card.position !='discarted']
